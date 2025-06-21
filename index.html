@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <!-- 添加内容安全策略，防止XSS攻击 -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://lf9-cdn-tos.bytecdntp.com; img-src 'self' https://s1.ax1x.com https://codex.rhythm.cafe data:; font-src 'self' https://lf9-cdn-tos.bytecdntp.com; connect-src 'self';">
+    <title>节奏医生谱面站 - Rhythm Doctor中文谱面资源</title>
+    <!-- 添加favicon -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <!-- 使用字节跳动静态资源库 -->
+    <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="nav-container container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xNiA2VjRjMC0xLjExLS44OS0yLTItMmgtNEM3Ljg5IDIgNyAyLjg5IDcgNHYySDRjLTEuMTEgMC0yIC44OS0yIDJ2MTJjMCAxLjExLjg5IDIgMiAyaDE2YzEuMTEgMCAyLS44OSAyLTJWOGMwLTEuMTEtLjg5LTItMi0yaC00em0tNiAwaDRWNGgtNHYyem0yIDEwYy0yLjc2IDAtNS0yLjI0LTUtNXMyLjI0LTUgNS01IDUgMi4yNCA1IDUtMi4yNCA1LTUgNXptMC04Yy0xLjY1IDAtMyAxLjM1LTMgM3MxLjM1IDMgMyAzIDMtMS4zNSAzLTMtMS4zNS0zLTMtM3oiLz48L3N2Zz4=" alt="Logo">
+                <h1>节奏医生谱面站-cafe国内中转站</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="active">首页</a>
+                <a href="about.html">关于我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 搜索部分 -->
+    <section class="search-section">
+        <div class="container">
+            <h2 class="search-title">今天想玩什么谱面？</h2>
+            <div class="search-box">
+                <input type="text" class="search-input" id="search-input" placeholder="搜索谱面、作者或歌曲...">
+                <button class="search-button" id="search-button">
+                    <i class="fas fa-search"></i> 搜索
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 筛选器侧边栏按钮 -->
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <i class="fas fa-filter"></i>
+    </button>
+    
+    <!-- 遮罩层 -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- 筛选器侧边栏容器 -->
+    <div class="sidebar-container" id="sidebar-container">
+        <div class="filters-container">
+            <h2 class="filters-title">筛选选项</h2>
+            
+            <!-- 标签筛选 -->
+            <div class="filter-group">
+                <h3 class="filter-title"><i class="fas fa-tags"></i> 标签 <span class="total-count">(5241)</span></h3>
+                <div class="filter-search">
+                    <input type="text" class="filter-search-input" placeholder="筛选...">
+                </div>
+                <ul class="filter-list" id="tag-filters">
+                    <li class="filter-item">
+                        <input type="checkbox" id="tag-1p" class="filter-checkbox" data-filter="tag" value="1p">
+                        <label for="tag-1p" class="filter-label">1p <span class="filter-count">1102</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="tag-2p" class="filter-checkbox" data-filter="tag" value="2p">
+                        <label for="tag-2p" class="filter-label">2p <span class="filter-count">420</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="tag-oneshots" class="filter-checkbox" data-filter="tag" value="oneshots">
+                        <label for="tag-oneshots" class="filter-label">oneshots <span class="filter-count">340</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="tag-oneshot" class="filter-checkbox" data-filter="tag" value="oneshot">
+                        <label for="tag-oneshot" class="filter-label">oneshot <span class="filter-count">287</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="tag-slow" class="filter-checkbox" data-filter="tag" value="slow">
+                        <label for="tag-slow" class="filter-label">slow <span class="filter-count">285</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="tag-fast" class="filter-checkbox" data-filter="tag" value="fast">
+                        <label for="tag-fast" class="filter-label">fast <span class="filter-count">254</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="tag-syncopation" class="filter-checkbox" data-filter="tag" value="syncopation">
+                        <label for="tag-syncopation" class="filter-label">syncopation <span class="filter-count">252</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="tag-meme" class="filter-checkbox" data-filter="tag" value="meme">
+                        <label for="tag-meme" class="filter-label">meme <span class="filter-count">188</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="tag-classic" class="filter-checkbox" data-filter="tag" value="classic">
+                        <label for="tag-classic" class="filter-label">classic <span class="filter-count">153</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="tag-8beat" class="filter-checkbox" data-filter="tag" value="8beat">
+                        <label for="tag-8beat" class="filter-label">8beat <span class="filter-count">143</span></label>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 作者筛选 -->
+            <div class="filter-group">
+                <h3 class="filter-title"><i class="fas fa-users"></i> 作者 <span class="total-count">(728)</span></h3>
+                <div class="filter-search">
+                    <input type="text" class="filter-search-input" placeholder="筛选...">
+                </div>
+                <ul class="filter-list" id="author-filters">
+                    <li class="filter-item">
+                        <input type="checkbox" id="author-xeno" class="filter-checkbox" data-filter="author" value="Xeno">
+                        <label for="author-xeno" class="filter-label">Xeno <span class="filter-count">181</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="author-dps" class="filter-checkbox" data-filter="author" value="DPS2004">
+                        <label for="author-dps" class="filter-label">DPS2004 <span class="filter-count">71</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="author-willowpoke" class="filter-checkbox" data-filter="author" value="willowpoke">
+                        <label for="author-willowpoke" class="filter-label">willowpoke <span class="filter-count">68</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="author-mario" class="filter-checkbox" data-filter="author" value="MarioMak967">
+                        <label for="author-mario" class="filter-label">MarioMak967 <span class="filter-count">68</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="author-het" class="filter-checkbox" data-filter="author" value="Het">
+                        <label for="author-het" class="filter-label">Het <span class="filter-count">60</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="author-123wenhuaxu" class="filter-checkbox" data-filter="author" value="123wenhuaxu">
+                        <label for="author-123wenhuaxu" class="filter-label">123wenhuaxu <span class="filter-count">58</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="author-healion123" class="filter-checkbox" data-filter="author" value="Healion123">
+                        <label for="author-healion123" class="filter-label">Healion123 <span class="filter-count">57</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="author-blu" class="filter-checkbox" data-filter="author" value="blu">
+                        <label for="author-blu" class="filter-label">blu <span class="filter-count">52</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="author-kin" class="filter-checkbox" data-filter="author" value="Kin">
+                        <label for="author-kin" class="filter-label">Kin <span class="filter-count">48</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="author-kat" class="filter-checkbox" data-filter="author" value="Kat">
+                        <label for="author-kat" class="filter-label">Kat <span class="filter-count">46</span></label>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 艺术家筛选 -->
+            <div class="filter-group">
+                <h3 class="filter-title"><i class="fas fa-music"></i> 艺术家 <span class="total-count">(2447)</span></h3>
+                <div class="filter-search">
+                    <input type="text" class="filter-search-input" placeholder="筛选...">
+                </div>
+                <ul class="filter-list" id="artist-filters">
+                    <li class="filter-item">
+                        <input type="checkbox" id="artist-toby" class="filter-checkbox" data-filter="artist" value="Toby Fox">
+                        <label for="artist-toby" class="filter-label">Toby Fox <span class="filter-count">59</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="artist-fizzd" class="filter-checkbox" data-filter="artist" value="Fizzd">
+                        <label for="artist-fizzd" class="filter-label">Fizzd <span class="filter-count">57</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="artist-frums" class="filter-checkbox" data-filter="artist" value="Frums">
+                        <label for="artist-frums" class="filter-label">Frums <span class="filter-count">37</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="artist-xeno" class="filter-checkbox" data-filter="artist" value="Xeno">
+                        <label for="artist-xeno" class="filter-label">Xeno <span class="filter-count">23</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="artist-louie" class="filter-checkbox" data-filter="artist" value="Louie Zong">
+                        <label for="artist-louie" class="filter-label">Louie Zong <span class="filter-count">23</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="artist-atsuover" class="filter-checkbox" data-filter="artist" value="atsuover">
+                        <label for="artist-atsuover" class="filter-label">atsuover <span class="filter-count">21</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="artist-lemon" class="filter-checkbox" data-filter="artist" value="Lemon Demon">
+                        <label for="artist-lemon" class="filter-label">Lemon Demon <span class="filter-count">20</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="artist-hafiz" class="filter-checkbox" data-filter="artist" value="fizzd (Hafiz Azman)">
+                        <label for="artist-hafiz" class="filter-label">fizzd (Hafiz Azman) <span class="filter-count">20</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="artist-plum" class="filter-checkbox" data-filter="artist" value="Plum">
+                        <label for="artist-plum" class="filter-label">Plum <span class="filter-count">18</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="artist-camellia" class="filter-checkbox" data-filter="artist" value="かめりあ (Camellia)">
+                        <label for="artist-camellia" class="filter-label">かめりあ (Camellia) <span class="filter-count">17</span></label>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 难度筛选 -->
+            <div class="filter-group">
+                <h3 class="filter-title"><i class="fas fa-chart-line"></i> 难度 <span class="total-count">(4)</span></h3>
+                <ul class="filter-list" id="difficulty-filters">
+                    <li class="filter-item">
+                        <input type="checkbox" id="diff-0" class="filter-checkbox" data-filter="difficulty" value="0">
+                        <label for="diff-0" class="filter-label">Easy <span class="filter-count">869</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="diff-1" class="filter-checkbox" data-filter="difficulty" value="1">
+                        <label for="diff-1" class="filter-label">Medium <span class="filter-count">1748</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="diff-2" class="filter-checkbox" data-filter="difficulty" value="2">
+                        <label for="diff-2" class="filter-label">Tough <span class="filter-count">1093</span></label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="checkbox" id="diff-3" class="filter-checkbox" data-filter="difficulty" value="3">
+                        <label for="diff-3" class="filter-label">Very Tough <span class="filter-count">238</span></label>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 同行评审筛选 -->
+            <div class="filter-group">
+                <h3 class="filter-title"><i class="fas fa-check-circle"></i> 同行评审</h3>
+                <ul class="filter-list" id="review-filters">
+                    <li class="filter-item">
+                        <input type="radio" id="review-peer" name="review" class="filter-checkbox" data-filter="review" value="peer" checked>
+                        <label for="review-peer" class="filter-label">Only peer-reviewed levels</label>
+                    </li>
+                    <li class="filter-item">
+                        <input type="radio" id="review-all" name="review" class="filter-checkbox" data-filter="review" value="all">
+                        <label for="review-all" class="filter-label">All levels</label>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 应用筛选按钮 -->
+            <div class="filter-actions">
+                <button id="apply-filters" class="apply-filters-btn">应用筛选</button>
+                <button id="reset-filters" class="reset-filters-btn">重置筛选</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主要内容部分 -->
+    <main class="main-content">
+        <div class="content-wrapper container" id="content-wrapper">
+            <!-- 加载指示器 -->
+            <div id="loading-indicator" class="loading-indicator">
+                <div class="spinner"></div>
+                <p>正在加载谱面数据...</p>
+            </div>
+
+            <!-- 谱面展示 -->
+            <div class="levels-grid" id="levels-grid">
+                <!-- 谱面卡片将由JavaScript动态生成 -->
+            </div>
+
+            <!-- 分页部分 -->
+            <div class="pagination" id="pagination">
+                <!-- 分页将由JavaScript动态生成 -->
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚部分 -->
+    <footer>
+        <div class="footer-content container">
+            <div class="footer-logo">节奏医生谱面站</div>
+            <div class="footer-copyright">
+                © 2025 节奏医生谱面站 - 本站仅作为谱面中转站使用，所有谱面版权归原作者所有
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/index.js"></script>
+</body>
+</html>

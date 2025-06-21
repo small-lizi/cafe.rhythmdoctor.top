@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面未找到</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&family=Orbitron:wght@400;500;700;900&display=swap');
+
+:root {
+  --primary: #00f7ff;
+  --secondary: #ff00e5;
+  --dark: #050a30;
+  --light: #e1f5fe;
+  --danger: #ff3860;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'ZCOOL QingKe HuangYou', 'Orbitron', sans-serif;
+  background: linear-gradient(to bottom, #000510 0%, #00205a 100%);
+  min-height: 100vh;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* 星空背景 */
+.stars, .stars2, .stars3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.stars {
+  background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABR0RVh0Q3JlYXRpb24gVGltZQAyLzcvMTOGU1gaAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAARNJREFUeJzt0sENwjAURNHxj+7SAlUCVEIp1EIh1DKWSRC2FMACorz3pJFm745S5TUJAAAAAAAAAAAAAAAAAICPtG8H3KKqqq1SapLcP7y6pZT6mKbp0mF7uazrutlJfk/V1My83srM82ValsvaPj6/JJfS3UDqushh3D91t1YH37RKslsDbxdI+Uvx/t0lOVfjhvbrvdvMPNbzo6zNX4vP/j+LuqqbKvs7fDVJ3DeO1Ns51Sa5nbtt98Q/RPt7xkM7xj5qUPt3Rj00tF9nDAkM7XHGsLDQHmcMDQztccbwsNAeZywSFNrjjMWCQnucseig0A9nrBAU+uaMlUJCP5wxMc4YF+eL+XHGuAAAAAAAAAAAAAAAAOzuBaBMbQ5wjRVfAAAAAElFTkSuQmCC') repeat top center;
+  animation: stars-move 200s linear infinite;
+}
+
+.stars2 {
+  background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABR0RVh0Q3JlYXRpb24gVGltZQAyLzcvMTOGU1gaAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAARNJREFUeJzt0sENwjAURNHxj+7SAlUCVEIp1EIh1DKWSRC2FMACorz3pJFm745S5TUJAAAAAAAAAAAAAAAAAICPtG8H3KKqqq1SapLcP7y6pZT6mKbp0mF7uazrutlJfk/V1My83srM82ValsvaPj6/JJfS3UDqushh3D91t1YH37RKslsDbxdI+Uvx/t0lOVfjhvbrvdvMPNbzo6zNX4vP/j+LuqqbKvs7fDVJ3DeO1Ns51Sa5nbtt98Q/RPt7xkM7xj5qUPt3Rj00tF9nDAkM7XHGsLDQHmcMDQztccbwsNAeZywSFNrjjMWCQnucseig0A9nrBAU+uaMlUJCP5wxMc4YF+eL+XHGuAAAAAAAAAAAAAAAAOzuBaBMbQ5wjRVfAAAAAElFTkSuQmCC') repeat top center;
+  animation: stars-move2 150s linear infinite;
+  opacity: 0.4;
+}
+
+.stars3 {
+  background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABR0RVh0Q3JlYXRpb24gVGltZQAyLzcvMTOGU1gaAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAARNJREFUeJzt0sENwjAURNHxj+7SAlUCVEIp1EIh1DKWSRC2FMACorz3pJFm745S5TUJAAAAAAAAAAAAAAAAAICPtG8H3KKqqq1SapLcP7y6pZT6mKbp0mF7uazrutlJfk/V1My83srM82ValsvaPj6/JJfS3UDqushh3D91t1YH37RKslsDbxdI+Uvx/t0lOVfjhvbrvdvMPNbzo6zNX4vP/j+LuqqbKvs7fDVJ3DeO1Ns51Sa5nbtt98Q/RPt7xkM7xj5qUPt3Rj00tF9nDAkM7XHGsLDQHmcMDQztccbwsNAeZywSFNrjjMWCQnucseig0A9nrBAU+uaMlUJCP5wxMc4YF+eL+XHGuAAAAAAAAAAAAAAAAOzuBaBMbQ5wjRVfAAAAAElFTkSuQmCC') repeat top center;
+  animation: stars-move3 100s linear infinite;
+  opacity: 0.2;
+}
+
+@keyframes stars-move {
+  from {background-position: 0 0;}
+  to {background-position: 10000px 5000px;}
+}
+
+@keyframes stars-move2 {
+  from {background-position: 0 0;}
+  to {background-position: -5000px 3000px;}
+}
+
+@keyframes stars-move3 {
+  from {background-position: 0 0;}
+  to {background-position: 5000px -5000px;}
+}
+
+/* 容器样式 */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.error-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+  transform-style: preserve-3d;
+  animation: container-float 6s ease-in-out infinite;
+}
+
+@keyframes container-float {
+  0%, 100% {
+    transform: translateY(0) rotateX(2deg);
+  }
+  50% {
+    transform: translateY(-20px) rotateX(-2deg);
+  }
+}
+
+/* 404样式 */
+.error-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  margin: 0;
+  position: relative;
+}
+
+.digit {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(0, 247, 255, 0.8);
+  animation: digit-glow 3s ease-in-out infinite alternate;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.four-1 {
+  animation-delay: -1.5s;
+  transform: perspective(500px) rotateY(-15deg);
+}
+
+.four-2 {
+  animation-delay: -0.5s;
+  transform: perspective(500px) rotateY(15deg);
+}
+
+@keyframes digit-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 247, 255, 0.8),
+                 0 0 20px rgba(0, 247, 255, 0.5),
+                 0 0 30px rgba(0, 247, 255, 0.3);
+    filter: brightness(1);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(0, 247, 255, 1),
+                 0 0 30px rgba(0, 247, 255, 0.8),
+                 0 0 45px rgba(0, 247, 255, 0.5);
+    filter: brightness(1.2);
+  }
+}
+
+/* 行星样式 */
+.planet {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 30% 30%, #7510F7 10%, #180D5B 60%);
+  border-radius: 50%;
+  box-shadow: 0 0 60px rgba(0, 247, 255, 0.5);
+  overflow: visible;
+  animation: planet-rotate 20s linear infinite;
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 60px;
+  margin-top: -30px;
+  margin-left: -100px;
+  border: 4px solid rgba(255, 0, 229, 0.8);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 0, 229, 0.6);
+  transform: rotateX(75deg);
+  animation: ring-rotate 15s linear infinite;
+}
+
+.crater {
+  position: absolute;
+  background: rgba(23, 14, 78, 0.8);
+  border-radius: 50%;
+}
+
+.crater-1 {
+  width: 30px;
+  height: 30px;
+  top: 20%;
+  left: 25%;
+}
+
+.crater-2 {
+  width: 40px;
+  height: 40px;
+  top: 60%;
+  left: 40%;
+}
+
+.crater-3 {
+  width: 25px;
+  height: 25px;
+  top: 40%;
+  left: 70%;
+}
+
+.crater-4 {
+  width: 20px;
+  height: 20px;
+  top: 75%;
+  left: 15%;
+}
+
+@keyframes planet-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ring-rotate {
+  from { transform: rotateX(75deg) rotateZ(0deg); }
+  to { transform: rotateX(75deg) rotateZ(360deg); }
+}
+
+/* 消息样式 */
+.error-message {
+  margin-top: 2rem;
+}
+
+.error-message h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--light);
+  text-shadow: 0 0 10px rgba(225, 245, 254, 0.5);
+}
+
+.error-message p {
+  font-size: 1.5rem;
+  color: var(--light);
+  opacity: 0.8;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 5px rgba(225, 245, 254, 0.3);
+}
+
+/* 故障文字效果 */
+.glitch {
+  position: relative;
+  animation: glitch 3s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--primary);
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--secondary);
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim2 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+    text-shadow: 0 0 5px var(--primary), 0 0 15px var(--primary), 0 0 20px var(--primary);
+  }
+  20% {
+    opacity: 0.9;
+    transform: translateX(5px) translateY(-5px);
+  }
+  40% {
+    opacity: 1;
+    transform: translateX(-5px) translateY(5px);
+  }
+  60% {
+    opacity: 0.9;
+    transform: translateX(3px) translateY(0px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(-3px) translateY(0px);
+  }
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip: rect(13px, 9999px, 24px, 0);
+  }
+  5% {
+    clip: rect(74px, 9999px, 43px, 0);
+  }
+  10% {
+    clip: rect(94px, 9999px, 70px, 0);
+  }
+  15% {
+    clip: rect(36px, 9999px, 92px, 0);
+  }
+  20% {
+    clip: rect(83px, 9999px, 7px, 0);
+  }
+  25% {
+    clip: rect(73px, 9999px, 92px, 0);
+  }
+  30% {
+    clip: rect(34px, 9999px, 44px, 0);
+  }
+  35% {
+    clip: rect(10px, 9999px, 96px, 0);
+  }
+  40% {
+    clip: rect(1px, 9999px, 87px, 0);
+  }
+  45% {
+    clip: rect(32px, 9999px, 33px, 0);
+  }
+  50% {
+    clip: rect(75px, 9999px, 46px, 0);
+  }
+  55% {
+    clip: rect(4px, 9999px, 15px, 0);
+  }
+  60% {
+    clip: rect(24px, 9999px, 63px, 0);
+  }
+  65% {
+    clip: rect(91px, 9999px, 7px, 0);
+  }
+  70% {
+    clip: rect(15px, 9999px, 44px, 0);
+  }
+  75% {
+    clip: rect(64px, 9999px, 91px, 0);
+  }
+  80% {
+    clip: rect(57px, 9999px, 40px, 0);
+  }
+  85% {
+    clip: rect(11px, 9999px, 90px, 0);
+  }
+  90% {
+    clip: rect(14px, 9999px, 26px, 0);
+  }
+  95% {
+    clip: rect(85px, 9999px, 47px, 0);
+  }
+  100% {
+    clip: rect(100px, 9999px, 78px, 0);
+  }
+}
+
+@keyframes glitch-anim2 {
+  0% {
+    clip: rect(71px, 9999px, 14px, 0);
+  }
+  5% {
+    clip: rect(31px, 9999px, 65px, 0);
+  }
+  10% {
+    clip: rect(7px, 9999px, 12px, 0);
+  }
+  15% {
+    clip: rect(21px, 9999px, 83px, 0);
+  }
+  20% {
+    clip: rect(21px, 9999px, 81px, 0);
+  }
+  25% {
+    clip: rect(3px, 9999px, 9px, 0);
+  }
+  30% {
+    clip: rect(48px, 9999px, 67px, 0);
+  }
+  35% {
+    clip: rect(69px, 9999px, 95px, 0);
+  }
+  40% {
+    clip: rect(60px, 9999px, 19px, 0);
+  }
+  45% {
+    clip: rect(61px, 9999px, 43px, 0);
+  }
+  50% {
+    clip: rect(10px, 9999px, 32px, 0);
+  }
+  55% {
+    clip: rect(93px, 9999px, 46px, 0);
+  }
+  60% {
+    clip: rect(4px, 9999px, 59px, 0);
+  }
+  65% {
+    clip: rect(67px, 9999px, 58px, 0);
+  }
+  70% {
+    clip: rect(19px, 9999px, 72px, 0);
+  }
+  75% {
+    clip: rect(71px, 9999px, 86px, 0);
+  }
+  80% {
+    clip: rect(85px, 9999px, 62px, 0);
+  }
+  85% {
+    clip: rect(16px, 9999px, 76px, 0);
+  }
+  90% {
+    clip: rect(75px, 9999px, 47px, 0);
+  }
+  95% {
+    clip: rect(100px, 9999px, 21px, 0);
+  }
+  100% {
+    clip: rect(81px, 9999px, 20px, 0);
+  }
+}
+
+/* 按钮样式 */
+.controls {
+  margin-top: 3rem;
+  z-index: 10;
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  background: linear-gradient(90deg, 
+    rgba(0, 247, 255, 0.1) 0%, 
+    rgba(0, 247, 255, 0.3) 50%, 
+    rgba(0, 247, 255, 0.1) 100%);
+  border: 1px solid rgba(0, 247, 255, 0.5);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 247, 255, 0.3),
+              0 0 20px rgba(0, 247, 255, 0.1);
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, 
+    rgba(0, 247, 255, 0.2) 0%, 
+    rgba(0, 247, 255, 0.5) 50%, 
+    rgba(0, 247, 255, 0.2) 100%);
+  box-shadow: 0 0 20px rgba(0, 247, 255, 0.5),
+              0 0 40px rgba(0, 247, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+.btn-shine {
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: btn-shine 4s infinite;
+}
+
+@keyframes btn-shine {
+  0% {
+    left: -150%;
+  }
+  20%, 100% {
+    left: 150%;
+  }
+}
+
+/* 飞船样式 */
+.spaceship {
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  transform: scale(0.6) rotate(30deg);
+  animation: ship-float 15s ease-in-out infinite alternate;
+}
+
+.ship-body {
+  position: relative;
+  width: 120px;
+  height: 60px;
+  background: linear-gradient(135deg, #4a4a4a 0%, #242424 100%);
+  border-radius: 60px;
+  box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+}
+
+.window {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 10px;
+  left: 40px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  border-radius: 50%;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.8),
+              0 0 15px var(--primary);
+  animation: window-pulse 3s ease-in-out infinite alternate;
+}
+
+.engine {
+  position: absolute;
+  bottom: -10px;
+  left: 30px;
+  width: 60px;
+  height: 20px;
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.flame {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 60px;
+  height: 40px;
+  background: linear-gradient(to bottom, 
+    rgba(255, 0, 229, 0.8) 0%, 
+    rgba(255, 165, 0, 0.6) 50%, 
+    rgba(255, 255, 0, 0.4) 100%);
+  border-radius: 50% 50% 20% 20% / 80% 80% 20% 20%;
+  animation: flame-flicker 0.5s ease-out infinite alternate;
+}
+
+@keyframes window-pulse {
+  0%, 100% {
+    opacity: 0.8;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 15px var(--primary);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 1),
+                0 0 25px var(--primary),
+                0 0 40px var(--primary);
+  }
+}
+
+@keyframes flame-flicker {
+  0%, 100% {
+    transform: scaleX(0.8) scaleY(0.9);
+    opacity: 0.8;
+  }
+  25% {
+    transform: scaleX(1) scaleY(1.1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleX(0.9) scaleY(1);
+    opacity: 0.9;
+  }
+  75% {
+    transform: scaleX(1.1) scaleY(0.9);
+    opacity: 0.95;
+  }
+}
+
+@keyframes ship-float {
+  0% {
+    transform: scale(0.6) rotate(30deg) translate(0, 0);
+  }
+  25% {
+    transform: scale(0.6) rotate(25deg) translate(-20px, 20px);
+  }
+  50% {
+    transform: scale(0.6) rotate(30deg) translate(-40px, 0);
+  }
+  75% {
+    transform: scale(0.6) rotate(35deg) translate(-20px, -20px);
+  }
+  100% {
+    transform: scale(0.6) rotate(30deg) translate(0, 0);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .error-code {
+    font-size: 8rem;
+  }
+  
+  .planet {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .ring {
+    width: 140px;
+    height: 40px;
+    margin-top: -20px;
+    margin-left: -70px;
+  }
+  
+  .error-message h1 {
+    font-size: 2rem;
+  }
+  
+  .error-message p {
+    font-size: 1.2rem;
+  }
+  
+  .spaceship {
+    transform: scale(0.4) rotate(30deg);
+    top: -80px;
+    right: -60px;
+  }
+}
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+    
+    <div class="container">
+        <div class="error-container">
+            <div class="error-code">
+                <span class="digit four-1">4</span>
+                <div class="planet">
+                    <div class="ring"></div>
+                    <div class="crater crater-1"></div>
+                    <div class="crater crater-2"></div>
+                    <div class="crater crater-3"></div>
+                    <div class="crater crater-4"></div>
+                </div>
+                <span class="digit four-2">4</span>
+            </div>
+            <div class="error-message">
+                <h1 class="glitch" data-text="页面未找到">页面未找到</h1>
+                <p>您访问的页面可能已经被传送到另一个星系</p>
+            </div>
+            <div class="spaceship">
+                <div class="ship-body"></div>
+                <div class="window"></div>
+                <div class="engine">
+                    <div class="flame"></div>
+                </div>
+            </div>
+            <div class="controls">
+                <a href="/" class="btn return-btn">
+                    <span class="btn-text">返回主页</span>
+                    <span class="btn-shine"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+// 等待DOM加载完成
+document.addEventListener('DOMContentLoaded', () => {
+  // 鼠标移动跟踪效果
+  const container = document.querySelector('.container');
+  const errorContainer = document.querySelector('.error-container');
+  
+  // 鼠标移动效果，让404元素跟随鼠标轻微移动，增强3D效果
+  container.addEventListener('mousemove', (e) => {
+    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+    
+    errorContainer.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+  });
+  
+  // 鼠标移出容器，恢复原位
+  container.addEventListener('mouseleave', () => {
+    errorContainer.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    setTimeout(() => {
+      errorContainer.style.transition = 'none';
+    }, 300);
+  });
+  
+  // 鼠标进入容器
+  container.addEventListener('mouseenter', () => {
+    errorContainer.style.transition = 'all 0.3s ease';
+  });
+  
+  // 添加随机星星
+  createRandomStars();
+});
+
+// 创建随机星星背景
+function createRandomStars() {
+  const starsContainer = document.createElement('div');
+  starsContainer.classList.add('random-stars');
+  document.body.appendChild(starsContainer);
+  
+  // 添加样式
+  const style = document.createElement('style');
+  style.textContent = `
+    .random-stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -2;
+      pointer-events: none;
+    }
+    
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      filter: blur(1px);
+      opacity: 0;
+      animation: twinkle var(--duration) infinite ease-in-out;
+      animation-delay: var(--delay);
+    }
+    
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      50% {
+        opacity: var(--opacity);
+        transform: scale(1);
+      }
+    }
+  `;
+  document.head.appendChild(style);
+  
+  // 创建100个随机星星
+  for (let i = 0; i < 100; i++) {
+    createStar(starsContainer);
+  }
+  
+  // 在控制台输出伪3D字符
+  printAscii3DTextToConsole();
+}
+
+// 创建单个星星
+function createStar(container) {
+  const star = document.createElement('div');
+  star.classList.add('star');
+  
+  // 随机位置
+  const x = Math.random() * 100;
+  const y = Math.random() * 100;
+  
+  // 随机大小
+  const size = Math.random() * 3 + 1;
+  
+  // 随机动画时间和延迟
+  const duration = Math.random() * 3 + 2;
+  const delay = Math.random() * 5;
+  const opacity = Math.random() * 0.7 + 0.3;
+  
+  // 设置样式
+  star.style.cssText = `
+    left: ${x}%;
+    top: ${y}%;
+    width: ${size}px;
+    height: ${size}px;
+    --duration: ${duration}s;
+    --delay: ${delay}s;
+    --opacity: ${opacity};
+  `;
+  
+  container.appendChild(star);
+}
+
+// 在控制台输出伪3D字符
+function printAscii3DTextToConsole() {
+  console.log("%c ", "font-size: 1px; padding: 120px 160px; background-size: 320px 240px; background: no-repeat url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1000 600\" style=\"background:%2301012b\"><defs><linearGradient id=\"grad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\"><stop offset=\"0%\" style=\"stop-color:%230ff;stop-opacity:1\" /><stop offset=\"100%\" style=\"stop-color:%23f0f;stop-opacity:1\" /></linearGradient></defs><g fill=\"url(%23grad)\"><path d=\"M50 150 L120 90 L120 150 L110 160 L110 100 L60 150 L50 150 Z M130 90 L200 90 L200 100 L140 100 L140 120 L190 120 L190 130 L140 130 L140 150 L200 150 L200 160 L130 160 L130 90 Z M210 90 L280 90 L280 100 L250 100 L250 160 L240 160 L240 100 L210 100 L210 90 Z M290 150 L350 90 L360 90 L300 150 L300 160 L290 160 L290 150 Z M400 90 L450 90 L480 160 L470 160 L460 140 L390 140 L380 160 L370 160 L400 90 Z M450 130 L425 100 L400 130 L450 130 Z M470 90 L500 90 L520 120 L540 90 L570 90 L540 130 L570 160 L540 160 L510 130 L498 150 L490 160 L480 160 L480 90 L470 90 Z M575 90 L635 90 L655 120 L655 90 L665 90 L665 160 L655 160 L655 135 L635 135 L615 160 L575 160 L605 130 L575 90 Z M585 100 L585 120 L615 120 L645 100 L585 100 Z M675 90 L685 90 L685 150 L745 150 L745 160 L675 160 L675 90 Z M755 90 L765 90 L765 160 L755 160 L755 90 Z M775 90 L835 90 L855 120 L855 90 L865 90 L865 160 L855 160 L855 135 L835 135 L815 160 L775 160 L805 130 L775 90 Z M785 100 L785 120 L815 120 L845 100 L785 100 Z M875 90 L885 90 L885 160 L875 160 L875 90 Z\"/></g></svg>')");
+  
+  const colors = ['%c'];
+  const shadows = [];
+  
+  // 基础文本
+  const text = [
+    "                                                           ",
+    "       ██████   ██████  ███████ ███    ███ ███████        ",
+    "      ██       ██    ██ ██      ████  ████ ██             ",
+    "      ██   ███ ██    ██ █████   ██ ████ ██ ███████        ",
+    "      ██    ██ ██    ██ ██      ██  ██  ██      ██        ",
+    "       ██████   ██████  ███████ ██      ██ ███████        ",
+    "                                                           ",
+    "      ██      ██ ███████ ██                                ", 
+    "      ██      ██    ███  ██                                ", 
+    "      ██      ██   ███   ██                                ", 
+    "      ██      ██  ███    ██                                ", 
+    "      ███████ ██ ███████ ██                                ", 
+    "                                                           "
+  ];
+  
+  // 创建3D效果的深度阴影
+  for(let i = 5; i > 0; i--) {
+    const color = `color: rgb(${25 + i * 15}, ${45 + i * 15}, ${255 - i * 20}); 
+                   font-weight: bold; 
+                   text-shadow: 0 ${i}px 0 rgba(0,0,0,${0.1*i});`;
+    colors.push(color);
+    shadows.push(`%c${text.join('\n')}`);
+  }
+  
+  // 最前面的文本颜色
+  colors.push(`color: rgb(0, 247, 255); 
+              font-weight: bold; 
+              text-shadow: 0 0 5px #00f7ff, 
+                           0 0 10px #00f7ff, 
+                           0 0 15px #00f7ff;`);
+  shadows.push(`%c${text.join('\n')}`);
+  
+  console.log([colors.join('')].concat(shadows).join('\n'));
+  
+  console.log("%c404 - 页面未找到 - 科幻风格页面已加载", 
+             "color: #00f7ff; font-size: 20px; font-weight: bold; text-shadow: 0 0 10px #00f7ff;");
+}
+    </script>
+</body>
+</html> 
